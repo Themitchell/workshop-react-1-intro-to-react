@@ -119,27 +119,20 @@ So where do we write our JSX
 - Components can hold their own state
 - Components return HTML
 
-<div>
-
 ```jsx
 function HelloWorldComponent () {
   return <p>Hello world!</p>;
 }
-```
 
-```jsx
 class HelloWorldComponent extends React.Component {
   render() {
     return <p>Hello world!</p>;
   }
 }
-```
 
-```jsx
 root.render(<HelloWorldComponent />);
 ```
 
-</div>
 </div>
 
 <!---
@@ -155,23 +148,18 @@ Ideally we don’t use classes. react considers classes to be outdated and with 
 - Props are immutable
 - When new props are passed to a react component, the component will re render
 
-<div>
 
 ```jsx
 function HelloWorldComponent (props) {
   return <h1>Hello {props.username}!</h1>;
 }
-```
 
-```jsx
 class HelloWorldComponent extends React.Component {
   render(props) {
     return <p>Hello {props.username}!</p>;
   }
 }
-```
 
-```jsx
 <HelloWorldComponent username="Andy" />
 ```
 
