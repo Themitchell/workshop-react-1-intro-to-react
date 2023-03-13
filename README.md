@@ -103,7 +103,6 @@ Probably not how we would build a large app
 ```jsx
 const helloWorldText = "Hello World!";
 root.render(<h1>{helloWorldText}</h1>);
-);
 ```
 
 # What is a component?
@@ -274,6 +273,8 @@ const HelloWorldComponent = () => {
 
 # What are events?
 
+<div class="columns">
+
 - Events are triggered by user interactions (button clicks, input changes etc)
 - Events can be bound to functions (event handlers)
 - Event handlers can modify state, or trigger ui changes
@@ -284,9 +285,15 @@ function HelloWorldComponent () {
     alert('Hello world');
   }
 
-  return <button onClick={onClickHandler}>Say hello</button>;
+  return (
+    <button onClick={onClickHandler}>
+      Say hello
+    </button>
+  );
 }
 ```
+
+</div>
 
 # What is state?
 
@@ -330,6 +337,8 @@ function HelloWorldComponent () {
 
 # Why not mutate state?
 
+<div class="columns">
+
 - It’s simpler to rebuild new state than mutate old state
 - It’s easier to detect that the entire state has changed than to detect if some part of the state has changed
 - If it’s easy to detect if state has changed, it’s easy to determine when components re render
@@ -347,11 +356,17 @@ function HelloWorldComponent () {
 }
 ```
 
+</div>
+
 # Data down, actions up!
 
 <style scoped>
   section ul {
     font-size: 22px;
+  }
+
+  section img {
+    width: 100%;
   }
 </style>
 
