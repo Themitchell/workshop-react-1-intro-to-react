@@ -8,13 +8,10 @@ header: '&e tech'
 footer: 'Created with [Marp](https://marp.app) and [Github Pages](https://pages.github.com)'
 backgroundImage: 'img/react-logo.svg'
 style: |
-  section {
-    font-size: 30px;
-    text-align: left;
-  }
-
+  section,
   section code {
     font-size: 30px;
+    text-align: left;
   }
 
   section ul,
