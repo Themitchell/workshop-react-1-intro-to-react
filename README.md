@@ -105,6 +105,13 @@ const helloWorldText = "Hello World!";
 root.render(<h1>{helloWorldText}</h1>);
 ```
 
+<!---
+note onClick not on-click
+JSX is not the only templating tool for react - we could use handlebars for example
+talk about how other frameworks handle templating
+So where do we write our JSX
+--->
+
 # What is a component?
 
 <div class="columns">
@@ -138,6 +145,10 @@ root.render(<HelloWorldComponent />);
 </div>
 </div>
 
+<!---
+Ideally we don’t use classes. react considers classes to be outdated and with the introduction of hooks, functional components can use state. React docs here https://beta.reactjs.org/reference/react/Component
+--->
+
 # What are props?
 
 <div class="columns">
@@ -170,6 +181,10 @@ class HelloWorldComponent extends React.Component {
 </div>
 </div>
 
+<!---
+talk about render and object instances in class component
+--->
+
 # propTypes
 
 <div class="columns">
@@ -191,6 +206,10 @@ HelloWorldComponent.propTypes = {
 ```
 
 </div>
+
+<!---
+Mention Typescript and advantages
+--->
 
 # defaultProps
 
@@ -295,6 +314,11 @@ function HelloWorldComponent () {
 
 </div>
 
+<!---
+point out that all event handlers take an event
+we could pass an event handler as a prop
+--->
+
 # What is state?
 
 <style scoped>
@@ -335,6 +359,11 @@ function HelloWorldComponent () {
 
 </div>
 
+<!---
+We haven’t talked about hooks yet - this is advanced but we can touch on it here
+when we talk about mutability js allows us to mutate but we shouldnt
+--->
+
 # Why not mutate state?
 
 <div class="columns">
@@ -357,6 +386,10 @@ function HelloWorldComponent () {
 ```
 
 </div>
+
+<!---
+You cannot modify state this way in a functional component you can only use hooks which avoid this problem
+--->
 
 # Data down, actions up!
 
