@@ -77,7 +77,8 @@ Intro to React
 <script src="path/to/react-dom.js" />
 
 <script>
-  const root = ReactDOM.createRoot(document.getElementById('root'));
+  const rootElement = document.getElementById('root');
+  const root = ReactDOM.createRoot(rootElement);
   root.render("Hello, world!");
 </script>
 ```
