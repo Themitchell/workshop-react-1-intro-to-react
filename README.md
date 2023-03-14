@@ -22,6 +22,17 @@ style: |
     margin-left: 0;
   }
 
+  section.long p,
+  section.long ul,
+  section.long ol,
+  section.long code, {
+    font-size: 24px;
+  }
+
+  section .columns img {
+    width: 100%;
+  }
+
   section header {
     height: 100px;
     width: 100px;
@@ -38,10 +49,14 @@ style: |
     text-indent: -99999999px
   }
 
-  .columns {
+  section .columns {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
+  }
+
+  section marp-pre code {
+
   }
 --->
 
@@ -57,6 +72,10 @@ Intro to React
   - controllers
   - models
 
+<!---
+Talk about other frameworks like angular, ember etc or even Rails and similarities / differences
+--->
+
 # What do we mean by view layer?
 
 - React renders JSX as HTML
@@ -68,11 +87,7 @@ Intro to React
 
 # A basic React app
 
-<style scoped>
-section code {
-  font-size: 24px;
-}
-</style>
+<!--- _class: invert long --->
 
 - HTML page with a root react element
 - Include react source
@@ -92,17 +107,18 @@ section code {
 ```
 
 <!---
-No need for pipelines
-No need for transpilers
+We do not have a pipeline
+We don't use any transpilers... yet!
 Just plain and simple react
-Probably not how we would build a large app
+Probably not how we would build a large app... why? Because we like lots of files and organisation
+Build tools are out of scope
 --->
 
 # What is JSX?
 
 - JSX is a templating tool for Javascript
 - It allows us to write something similar to HTML (but not quite the same!)
-- It allows us to interpolate JavaScript using {}
+- It allows us to interpolate JavaScript using `{}`
 - It allows us to bind data or functions to JSX attributes
 - It allows us to bind UI events
 
@@ -112,7 +128,9 @@ root.render(<h1>{helloWorldText}</h1>);
 ```
 
 <!---
-note onClick not on-click
+Mention that it looks like HTML and is similar but it is not
+Mention that React uses camel case for props so that it can bind HTML properties if we need to
+for example class= cannot accept a dynamic value. className= can.
 JSX is not the only templating tool for react - we could use handlebars for example
 talk about how other frameworks handle templating
 So where do we write our JSX
@@ -120,22 +138,25 @@ So where do we write our JSX
 
 # What is a component?
 
+<!--- _class: invert long --->
+
 <div class="columns">
 
 - Components are reusable independent bits of code
 - Components can be as simple as a function but we can also use classes
 - Components can accept props as an argument
 - Components can hold their own state
-- Components return HTML
+- Components return JSX to be rendered as HTML
+- To interpret JSX we need babel
 
 ```jsx
 function HelloWorldComponent () {
-  return <p>Hello world!</p>;
+  return <h1>Hello world!</h1>;
 }
 
 class HelloWorldComponent extends React.Component {
   render() {
-    return <p>Hello world!</p>;
+    return <h1>Hello world!</h1>;
   }
 }
 
@@ -145,7 +166,8 @@ root.render(<HelloWorldComponent />);
 </div>
 
 <!---
-Ideally we don’t use classes. react considers classes to be outdated and with the introduction of hooks, functional components can use state. React docs here https://beta.reactjs.org/reference/react/Component
+Mention that the above examples are functionally the same
+Mention in new versions we shouldn's use classes. React considers classes to be outdated and with the introduction of hooks, functional components can use state. React docs here https://beta.reactjs.org/reference/react/Component
 --->
 
 # What are props?
@@ -165,7 +187,7 @@ function HelloWorldComponent (props) {
 
 class HelloWorldComponent extends React.Component {
   render(props) {
-    return <p>Hello {props.username}!</p>;
+    return <h1>Hello {props.username}!</h1>;
   }
 }
 
@@ -256,7 +278,7 @@ function HelloWorldComponent (props) {
 <div class="columns">
 
 - Sometimes we want to wrap components in another component
-- We can use the special props.children  to create a wrapper component
+- We can use the special `props.children`  to create a wrapper component
 
 
 ```jsx
@@ -314,12 +336,7 @@ we could pass an event handler as a prop
 
 # What is state?
 
-<style scoped>
-  section ul,
-  section ul code {
-    font-size: 26px;
-  }
-</style>
+<!--- _class: long invert --->
 
 
 <div class="columns">
@@ -386,30 +403,26 @@ You cannot modify state this way in a functional component you can only use hook
 
 # Data down, actions up!
 
-<style scoped>
-  section ul {
-    font-size: 22px;
-  }
-
-  section img {
-    width: 100%;
-  }
-</style>
+<!--- _class: invert long --->
 
 <div class="columns">
 
 - Data down
-  - data comes into a component via props
-  - when props change, the component is re rendered
+  - Passed to component via props
+  - Props changes re render the component
 - Actions up
-  - Callback functions can be injected into a component via props
-  - Component calls a callback function using React DOM events
-  - Callback function modifies a value outside the component
-  - the modified value is passed to the child as a prop component causing a re render
+  - Callbacks functions passed to component via props
+  - Component calls a callback using events
+  - Callback modifies a value in parent component
+  - Modified value passed back to the child as a prop
 
 ![data down actions up](img/data-down-actions-up.jpg)
 
 </div>
+
+<!---
+Stop to show the differenct between the original HelloWorldComponent and the newer HelloWorldComponent which uses the InputComponent. Talk about how the state is being "lifted up" a level from the input.
+--->
 
 
 # Lists and keys
