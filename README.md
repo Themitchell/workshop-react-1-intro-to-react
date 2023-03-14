@@ -73,7 +73,7 @@ Intro to React
   - models
 
 <!---
-Talk about other frameworks like angular, ember etc or even Rails and similarities / differences
+There are other frameworks like angular, ember etc or even Rails which have similarities / differences
 --->
 
 # What do we mean by view layer?
@@ -107,10 +107,9 @@ Talk about other frameworks like angular, ember etc or even Rails and similariti
 ```
 
 <!---
-We do not have a pipeline
-We don't use any transpilers... yet!
+We do not have a pipeline, we don't use any transpilers... yet!
 Just plain and simple react
-Probably not how we would build a large app... why? Because we like lots of files and organisation
+This is not how we would build a large app... why? Because we like lots of files and organisation
 Build tools are out of scope
 --->
 
@@ -128,12 +127,9 @@ root.render(<h1>{helloWorldText}</h1>);
 ```
 
 <!---
-Mention that it looks like HTML and is similar but it is not
-Mention that React uses camel case for props so that it can bind HTML properties if we need to
-for example class= cannot accept a dynamic value. className= can.
+React uses camel case for props so that it can bind HTML properties if we need to
+for example class="" cannot accept a dynamic value. className={} can.
 JSX is not the only templating tool for react - we could use handlebars for example
-talk about how other frameworks handle templating
-So where do we write our JSX
 --->
 
 # What is a component?
@@ -166,8 +162,8 @@ root.render(<HelloWorldComponent />);
 </div>
 
 <!---
-Mention that the above examples are functionally the same
-Mention in new versions we shouldn's use classes. React considers classes to be outdated and with the introduction of hooks, functional components can use state. React docs here https://beta.reactjs.org/reference/react/Component
+The above examples are functionally the same
+In new versions  of React we shouldn's use classes, there is no need. React considers classes to be outdated and with the introduction of hooks, functional components can use state. React docs here https://beta.reactjs.org/reference/react/Component
 --->
 
 # What are props?
@@ -195,11 +191,6 @@ class HelloWorldComponent extends React.Component {
 ```
 
 </div>
-</div>
-
-<!---
-talk about render and object instances in class component
---->
 
 # propTypes
 
@@ -224,7 +215,8 @@ HelloWorldComponent.propTypes = {
 </div>
 
 <!---
-Mention Typescript and advantages
+We can use the browser console to view Type erros easily and it will also be highlighted in tests
+We can also use Typescript which removes the need for PropTypes. Type handling is managed at compilation time not run time.
 --->
 
 # defaultProps
@@ -263,15 +255,20 @@ function SayHello (props) {
 
 function HelloWorldComponent (props) {
   return (
-    <div>
+    <React.Fragment>
       <SayHello username={props.username} />
       <SayHello username="World" />
       <SayHello {...props} />
-    </div>
+    </React.Fragment>
   )
 }
 ```
 </div>
+
+<!---
+We can also use <div> instead of <React.Fragment> if we want to wrap our elements in a container. React.Fragment will not render any unneccessary wrapping element in the DOM if we don't need it. This can help with certain types of styling which targets :children for example.
+The wrapping element or component is necessary as each React component render must have one root element or component
+--->
 
 # Component children
 
@@ -279,6 +276,7 @@ function HelloWorldComponent (props) {
 
 - Sometimes we want to wrap components in another component
 - We can use the special `props.children`  to create a wrapper component
+- This is called composition
 
 
 ```jsx
@@ -309,9 +307,10 @@ function HelloWorldComponent () {
 
 <div class="columns">
 
-- Events are triggered by user interactions (button clicks, input changes etc)
-- Events can be bound to functions (event handlers)
+- DOM events are triggered by user interactions (button clicks, input changes etc)
+- DOM events can be bound to functions (event handlers)
 - Event handlers can modify state, or trigger ui changes
+- Event handlers can be passed as props
 
 ```jsx
 function HelloWorldComponent () {
@@ -330,8 +329,8 @@ function HelloWorldComponent () {
 </div>
 
 <!---
-point out that all event handlers take an event
-we could pass an event handler as a prop
+All event handlers take an event as an argument, we used it to wrap the functionality we want to perform. We can also define these inline.
+Note the missing `(event)` from the onClick assignment
 --->
 
 # What is state?
@@ -370,8 +369,7 @@ function HelloWorldComponent () {
 </div>
 
 <!---
-We haven’t talked about hooks yet - this is advanced but we can touch on it here
-when we talk about mutability js allows us to mutate but we shouldnt
+We haven’t talked about hooks yet - this is slightly more advanced but we can touch on it here
 --->
 
 # Why not mutate state?
@@ -398,7 +396,7 @@ function HelloWorldComponent () {
 </div>
 
 <!---
-You cannot modify state this way in a functional component you can only use hooks which avoid this problem
+You cannot modify state this way in a functional component you can only use hooks which avoid this problem, note in the console when we try to modify state directly
 --->
 
 # Data down, actions up!
@@ -421,7 +419,7 @@ You cannot modify state this way in a functional component you can only use hook
 </div>
 
 <!---
-Stop to show the differenct between the original HelloWorldComponent and the newer HelloWorldComponent which uses the InputComponent. Talk about how the state is being "lifted up" a level from the input.
+Look at the difference between the original HelloWorldComponent and the newer HelloWorldComponent which uses the InputComponent. Note how the state is being "lifted up" a level from the input.
 --->
 
 
@@ -459,7 +457,7 @@ function UsersList (props) {
 </div>
 
 <!---
-What do we mean by stable? indexs are bad, they can change if items are reordered. Ids are good, they are fixed and unique. You can use whatever you like as long as you can ensure it is stable and unchanging.
+What do we mean by stable? indexes are bad, they can change if items are reordered. Ids are good, they are fixed and unique. You can use whatever you like as long as you can ensure it is stable and unchanging but generally indexes are not the best way.
 
 It is possible to use indexes in a fix but not for items that may reorder. See https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/
 --->
