@@ -257,22 +257,21 @@ function HelloWorldComponent (props) {
 - Sometimes we want to wrap components in another component
 - We can use the special props.children  to create a wrapper component
 
-<div>
 
 ```jsx
 function PopUpWindow (props) {
   return (
-    <div className="pop-up">
+    <div style={{ border: '1px solid grey' }}>
       {props.children}
     </div>
   );
 }
 
-function SayHello (props) {
-  return <p>Hello {props.username}!</p>;
+function SayHello(props) {
+  return <h1>Hello {props.username}!</h1>;
 }
 
-const HelloWorldComponent = () => {
+function HelloWorldComponent () {
   return (
     <PopUpWindow>
       <SayHello username="Andy" />
@@ -281,7 +280,6 @@ const HelloWorldComponent = () => {
 }
 ```
 
-</div>
 </div>
 
 # What are events?
