@@ -410,3 +410,43 @@ You cannot modify state this way in a functional component you can only use hook
 ![data down actions up](img/data-down-actions-up.jpg)
 
 </div>
+
+
+# Lists and keys
+
+<div class="columns">
+
+- Rendering lists is simple
+- Each item in a list requires a `key`
+- Keys help react identify items which are added, changed, or removed
+- Keys should be unique to a set of sibling elements
+- Keys should be stable
+- Keys must on the iterated component, not inside a child
+
+```jsx
+function ListItem (props) {
+  // Do not add the key here
+  return <li>{props.children}</li>;
+};
+
+function UsersList (props) {
+  const listItems = props.users.map(function (user) {
+    // Keys must go here
+    return (
+      <ListItem key={user.id}>
+        {user.username}
+      </ListItem>
+    );
+  });
+
+  return <ul>{listItems}</ul>;
+}
+```
+
+</div>
+
+<!---
+What do we mean by stable? indexs are bad, they can change if items are reordered. Ids are good, they are fixed and unique. You can use whatever you like as long as you can ensure it is stable and unchanging.
+
+It is possible to use indexes in a fix but not for items that may reorder. See https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/
+--->
