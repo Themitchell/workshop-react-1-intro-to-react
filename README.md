@@ -6,7 +6,9 @@ headingDivider: 2
 paginate: true
 header: '&e tech'
 footer: 'Created with [Marp](https://marp.app) and [Github Pages](https://pages.github.com)'
-backgroundImage: 'img/react-logo.svg'
+backgroundImage: url('img/react-logo.svg')
+backgroundPosition: 120% 120%
+backgroundSize: 40%
 style: |
   section,
   section code {
@@ -65,6 +67,12 @@ Intro to React
 - All of these things are the UI or view layer
 
 # A basic React app
+
+<style scoped>
+section code {
+  font-size: 24px;
+}
+</style>
 
 - HTML page with a root react element
 - Include react source
