@@ -243,7 +243,8 @@ function HelloWorldComponent (props) {
   return (
     <div>
       <SayHello username={props.username} />
-      <SayHello ...props />
+      <SayHello username="World" />
+      <SayHello {...props} />
     </div>
   )
 }
