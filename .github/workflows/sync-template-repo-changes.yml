@@ -11,7 +11,8 @@ on:
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
-
+    environment: template-sync
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v3
