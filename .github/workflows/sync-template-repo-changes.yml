@@ -1,9 +1,12 @@
-name:
+name: sync-template-repo-changes
 on:
   schedule:
   - cron:  "0 0 1 * *"
   workflow_dispatch:
 
+permissions:
+  pull-requests: write
+  
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
