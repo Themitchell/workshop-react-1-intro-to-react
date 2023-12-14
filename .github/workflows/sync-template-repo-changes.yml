@@ -16,18 +16,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Print a secret 
-        shell: bash
-        env: 
-          NOT_A_REAL_ENV_SECRET: ${{ secrets.NOT_A_REAL_ENV_SECRET }}
-        run: |
-          echo "$NOT_A_REAL_ENV_SECRET" | base64
-      - name: Print a secret 
-        shell: bash
-        env: 
-          NOT_A_REAL_SECRET: ${{ secrets.NOT_A_REAL_SECRET }}
-        run: |
-          echo "$NOT_A_REAL_SECRET" | base64
       - name: actions-template-sync
         uses: AndreasAugustin/actions-template-sync@v1.1.3
         with:
